@@ -1710,9 +1710,36 @@ blockquote {
   .hero-leaf-accent { width: 28px; height: 22px; margin-left: 5px; }
   .hero-swash { left: 104%; width: clamp(64px, 18vw, 92px); bottom: 6px; }
   .hero-intro { font-size: 13.5px; margin-top: 14px; line-height: 1.6; }
-  .hero-actions { align-items: stretch; flex-direction: column; gap: 11px; margin-top: 20px; }
-  .hero-actions .button-emerald { width: 100%; min-height: 48px; }
-  .story-play-link { justify-content: center; width: 100%; padding: 6px 14px; }
+  .hero-actions {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+  }
+  .hero-actions .button-emerald {
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0 10px;
+    gap: 5px;
+    font-size: 11px;
+    white-space: nowrap;
+  }
+  .hero-actions .button-emerald .btn-icon { width: 14px; height: 14px; flex-shrink: 0; }
+  .story-play-link {
+    justify-content: center;
+    width: auto;
+    flex: 1 1 0;
+    min-width: 0;
+    min-height: 44px;
+    padding: 4px 10px 4px 6px;
+    gap: 6px;
+    font-size: 10.8px;
+    white-space: nowrap;
+  }
+  .story-play-link .play-ring { width: 28px; height: 28px; flex-shrink: 0; }
 
   .promise-dock { margin-top: 14px; padding-bottom: 16px; }
   .promise-glass-bar {
@@ -1735,15 +1762,22 @@ blockquote {
   .section-heading { gap: 12px; }
   .heading-side p { margin-bottom: 12px; }
   h2 { font-size: clamp(31px, 9.2vw, 46px); }
-  .product-grid { grid-template-columns: 1fr; gap: 24px; margin-top: 30px; }
-  .product-card { border-radius: 185px 185px 22px 22px; padding: 12px 12px 20px; }
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 10px;
+    margin-top: 26px;
+  }
+  .product-card { border-radius: 120px 120px 16px 16px; padding: 8px 8px 14px; }
   .product-image {
     height: auto;
     aspect-ratio: 5 / 4;
-    border-radius: 170px 170px 14px 14px;
+    border-radius: 110px 110px 11px 11px;
   }
-  .product-info { padding: 16px 8px 4px; }
-  .product-info h3 { font-size: 23px; }
+  .product-info { padding: 10px 4px 2px; }
+  .product-number { font-size: 8.5px; letter-spacing: .1em; }
+  .product-info h3 { font-size: 15px; margin: 4px 0 3px; line-height: 1.2; }
+  .product-info p { font-size: 11px; line-height: 1.45; }
+  .product-link { font-size: 10px; margin-top: 8px; }
 
   .pack-banner-section { padding: 36px 0; }
   .pack-banner-section::after { inset: 8px; border-radius: 22px; }
@@ -1764,11 +1798,76 @@ blockquote {
   .story-lead { font-size: 15.5px; }
   .story-signoff { margin-top: 34px; }
 
-  .values-lead { font-size: 13.5px; margin-top: 14px; }
-  .values-grid { gap: 16px; margin-top: 34px; }
-  .value-card { min-height: auto; padding: 24px 22px 20px; border-radius: 22px; }
-  .value-card-top { margin-bottom: 18px; }
-  .value-card h3 { font-size: 24px; }
+  .values-lead { font-size: 13px; margin-top: 12px; }
+  .values-grid {
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(215px, 66%);
+    gap: 12px;
+    margin-top: 26px;
+    padding: 6px 2px 14px;
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .values-grid::-webkit-scrollbar { display: none; }
+  .value-card {
+    scroll-snap-align: start;
+    min-height: auto;
+    padding: 18px 16px 15px;
+    border-radius: 20px;
+    opacity: 1;
+    animation: mobileValueFloat 4.2s ease-in-out infinite;
+  }
+  .value-card:nth-child(2) { animation-delay: .8s; }
+  .value-card:nth-child(3) { animation-delay: 1.6s; }
+  .value-card-highlight { transform: none; }
+  .value-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(
+      115deg,
+      transparent 28%,
+      rgba(255, 240, 198, .28) 50%,
+      transparent 72%
+    );
+    transform: translateX(-140%);
+    animation: mobileValueShimmer 4.8s ease-in-out infinite;
+  }
+  .value-card-highlight::after {
+    background: linear-gradient(
+      115deg,
+      transparent 28%,
+      rgba(255, 224, 142, .16) 50%,
+      transparent 72%
+    );
+    animation-delay: 1.2s;
+  }
+  .value-card-top { margin-bottom: 12px; }
+  .value-icon { width: 38px; height: 38px; border-radius: 12px; }
+  .value-icon svg { width: 18px; height: 18px; }
+  .value-index { font-size: 23px; }
+  .value-card h3 { font-size: 19px; margin-bottom: 6px; }
+  .value-card p { font-size: 12px; line-height: 1.55; }
+  .value-footer { padding-top: 12px; margin-top: 14px; }
+  .value-pill { font-size: 9px; padding: 4px 10px; }
+  @supports (animation-timeline: view()) {
+    .value-card {
+      animation:
+        mobileValueScrollRise linear both,
+        mobileValueFloat 4.2s ease-in-out infinite;
+      animation-timeline: view(), auto;
+      animation-range: entry 0% cover 36%, normal;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .value-card,
+    .value-card::after { animation: none; }
+  }
 
   .quote-inner { padding: 62px 16px 58px; }
   blockquote { font-size: clamp(24px, 7vw, 36px); margin: 18px 0 22px; }
@@ -1789,11 +1888,34 @@ blockquote {
   .footer-bottom { align-items: flex-start; flex-direction: column; gap: 7px; }
 }
 
+@keyframes mobileValueFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+@keyframes mobileValueShimmer {
+  0% { transform: translateX(-140%); }
+  45%, 100% { transform: translateX(140%); }
+}
+@keyframes mobileValueScrollRise {
+  from { translate: 0 18px; scale: .94; }
+  to { translate: 0 0; scale: 1; }
+}
+
 @media (max-width: 400px) {
   .container { width: calc(100% - 24px); }
   .brand { width: 92px; padding: 4px 10px; }
   .hero-copy h1 { font-size: clamp(32px, 10vw, 40px); }
   .hero-swash { width: 56px; bottom: 5px; }
+  .hero-actions { gap: 6px; }
+  .hero-actions .button-emerald { min-height: 40px; padding: 0 8px; gap: 4px; font-size: 10px; }
+  .hero-actions .button-emerald .btn-icon { width: 12px; height: 12px; }
+  .story-play-link { min-height: 40px; padding: 4px 8px 4px 5px; gap: 5px; font-size: 9.8px; }
+  .story-play-link .play-ring { width: 24px; height: 24px; }
+  .product-grid { gap: 12px 8px; }
+  .product-card { border-radius: 100px 100px 14px 14px; padding: 6px 6px 12px; }
+  .product-image { border-radius: 92px 92px 10px 10px; }
+  .product-info h3 { font-size: 14px; }
+  .product-info p { font-size: 10.5px; }
   h2 { font-size: clamp(28px, 8.6vw, 34px); }
   .promise-item { padding: 10px 0; gap: 10px; }
   .promise-icon-badge { width: 35px; height: 35px; }
