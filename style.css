@@ -1446,13 +1446,43 @@ blockquote {
   margin-top: 32px;
 }
 .button-green {
-  color: var(--white);
-  background: var(--emerald-pill-gradient);
-  box-shadow: 0 12px 26px rgba(16, 57, 35, .22);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 40px;
+  padding: 0 20px;
+  border-radius: 999px;
+  font-family: var(--sans);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .02em;
+  color: #ffffff;
+  background: linear-gradient(135deg, rgba(20, 105, 54, .82) 0%, rgba(9, 58, 29, .9) 100%);
+  border: 1px solid rgba(142, 226, 162, .45);
+  backdrop-filter: blur(14px) saturate(160%);
+  -webkit-backdrop-filter: blur(14px) saturate(160%);
+  box-shadow:
+    0 10px 24px rgba(12, 48, 28, .18),
+    0 0 14px rgba(45, 180, 88, .18),
+    inset 0 1.5px 0 rgba(255, 255, 255, .45),
+    inset 0 -1px 0 rgba(0, 0, 0, .25);
+  transition: transform .25s ease, box-shadow .25s ease, background .25s ease, border-color .25s ease;
 }
 .button-green:hover {
-  background: var(--accent-gradient);
-  box-shadow: 0 14px 30px rgba(166, 55, 7, .28);
+  color: #ffffff;
+  transform: translateY(-2px);
+  background: linear-gradient(135deg, rgba(28, 128, 66, .92) 0%, rgba(13, 72, 38, .96) 100%);
+  border-color: rgba(188, 248, 202, .75);
+  box-shadow:
+    0 14px 28px rgba(12, 48, 28, .26),
+    0 0 20px rgba(45, 205, 95, .32),
+    inset 0 1.5px 0 rgba(255, 255, 255, .65);
+}
+.btn-whatsapp-icon {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
 }
 .contact-details {
   padding: 36px 38px;
@@ -1791,10 +1821,39 @@ blockquote {
   .pack-banner-frame { border-radius: 15px; }
 
   .story-grid { padding-top: 58px; padding-bottom: 62px; gap: 36px; }
-  .story-art { height: 340px; }
-  .story-image-main { left: 4%; width: 72%; height: 290px; border-radius: 140px 140px 18px 18px; }
-  .story-image-detail { right: 0; width: 42%; height: 138px; border-radius: 18px; border-width: 5px; }
-  .story-label { bottom: 44px; left: 0; padding: 10px 13px; border-radius: 14px; }
+  .story-art { height: 410px; }
+  .story-image-main {
+    top: 8px;
+    left: 5%;
+    width: 66%;
+    height: 340px;
+    border-radius: 165px 165px 14px 14px;
+    border: 1px solid rgba(255, 255, 255, .25);
+    box-shadow: 0 20px 48px rgba(0, 0, 0, .32);
+    transform: rotate(-4deg);
+  }
+  .story-image-detail {
+    right: 3%;
+    bottom: 8px;
+    width: 44%;
+    height: 195px;
+    border: 6px solid var(--forest-900);
+    border-radius: 95px 95px 12px 12px;
+    box-shadow: 0 20px 42px rgba(0, 0, 0, .34);
+    transform: rotate(7deg);
+    z-index: 2;
+  }
+  .story-label {
+    bottom: 82px;
+    left: 0;
+    padding: 11px 15px;
+    border-radius: 13px;
+    transform: rotate(-8deg);
+    z-index: 3;
+    font-size: 10px;
+  }
+  .story-label span { font-size: 8.5px; }
+  .story-label strong { font-size: 17px; }
   .story-lead { font-size: 15.5px; }
   .story-signoff { margin-top: 34px; }
 
@@ -1872,8 +1931,18 @@ blockquote {
   .quote-inner { padding: 62px 16px 58px; }
   blockquote { font-size: clamp(24px, 7vw, 36px); margin: 18px 0 22px; }
   .contact-section { padding: 62px 0 60px; }
-  .contact-actions { align-items: stretch; flex-direction: column; gap: 16px; }
-  .contact-actions .button-green { width: 100%; }
+  .contact-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .contact-actions .button-green {
+    width: auto;
+    align-self: flex-start;
+    min-height: 38px;
+    padding: 0 18px;
+    font-size: 12px;
+  }
   .contact-details { padding: 22px 18px; border-radius: 18px; }
   .detail-block a { font-size: 18px; word-break: break-word; }
   .footer-top {
@@ -1916,6 +1985,12 @@ blockquote {
   .product-image { border-radius: 92px 92px 10px 10px; }
   .product-info h3 { font-size: 14px; }
   .product-info p { font-size: 10.5px; }
+  .story-art { height: 360px; }
+  .story-image-main { width: 66%; height: 295px; border-radius: 140px 140px 12px 12px; }
+  .story-image-detail { width: 44%; height: 170px; border-radius: 82px 82px 10px 10px; border-width: 5px; bottom: 6px; }
+  .story-label { bottom: 68px; padding: 9px 12px; }
+  .story-label strong { font-size: 15px; }
+  .contact-actions .button-green { min-height: 36px; padding: 0 16px; font-size: 11.5px; }
   h2 { font-size: clamp(28px, 8.6vw, 34px); }
   .promise-item { padding: 10px 0; gap: 10px; }
   .promise-icon-badge { width: 35px; height: 35px; }
